@@ -21,18 +21,20 @@ export default function LoginForm() {
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const password = data.get('password');
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
 
-    // Add validation code here
 
     const emailValid = validator.validate(email);
     const passwordValid = passwordRegex.test(password)
 
+    console.log(emailValid)
+    console.log(passwordValid)
 
-    if (!passwordValid(password) && !emailValid) {
-      setShowAlert("Login Unsuccessful");
+    if (passwordValid && emailValid) {
+      setShowAlert("Login Successful");
     }
     else {
-      setShowAlert("Login Successful");
+      setShowAlert("Login Unsuccessful");
     }
 
   }
