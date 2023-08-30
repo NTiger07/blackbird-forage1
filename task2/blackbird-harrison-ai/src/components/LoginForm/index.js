@@ -25,12 +25,8 @@ export default function LoginForm() {
     // Add validation code here
 
     const emailValid = validator.validate(email);
-    const passwordValid = (password) => {
-      if (password === "") {
-        return (false)
-      }
-      return (true)
-    }
+    const passwordValid = passwordRegex.test(password)
+
 
     if (!passwordValid(password) && !emailValid) {
       setShowAlert("Login Unsuccessful");
